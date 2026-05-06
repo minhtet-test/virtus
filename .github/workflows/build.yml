@@ -1,6 +1,5 @@
 name: Build Android APK
 
-# GitHub ကို Code တင်လိုက်တာနဲ့ Auto အလုပ်လုပ်မယ်
 on:
   push:
     branches: [ main, master ]
@@ -12,7 +11,7 @@ jobs:
     steps:
     # ၁။ Code တွေကို ဆွဲယူမယ်
     - name: Checkout source
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4  # <-- ဒီနေရာမှာ v4 ပြောင်းလိုက်ပါတယ်
 
     # ၂။ Buildozer သုံးပြီး APK ထုတ်မယ်
     - name: Build with Buildozer
@@ -22,9 +21,9 @@ jobs:
         command: buildozer android debug
         buildozer_version: master
 
-    # ၃။ ရလာတဲ့ APK ဖိုင်ကို GitHub မှာ Download ဆွဲလို့ရအောင် တင်ပေးမယ်
+    # ၃။ ရလာတဲ့ APK ဖိုင်ကို Download ဆွဲလို့ရအောင် တင်ပေးမယ်
     - name: Upload artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  # <-- ဒီနေရာမှာ v4 ပြောင်းလိုက်ပါတယ် (Error တက်တဲ့နေရာပါ)
       with:
         name: KoCLay-App-APK
         path: bin/*.apk
