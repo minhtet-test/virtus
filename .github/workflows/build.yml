@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04 # Error မတက်တဲ့ Server version ကို သုံးထားပါတယ်
+    runs-on: ubuntu-22.04 
 
     steps:
     - name: Checkout source
@@ -25,7 +25,8 @@ jobs:
     - name: Install Buildozer
       run: |
         pip install --upgrade pip
-        pip install buildozer cython virtualenv
+        # ဒီနေရာမှာ Cython version ကို 0.29.33 အဖြစ် ပြောင်းထားပါတယ်
+        pip install buildozer cython==0.29.33 virtualenv
 
     - name: Build with Buildozer
       run: yes | buildozer android debug
